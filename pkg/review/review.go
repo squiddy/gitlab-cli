@@ -42,5 +42,8 @@ func fetchLastPipeline(git *gitlab.Client, r *gitlab.MergeRequest) *gitlab.Pipel
 	if err != nil {
 		return nil
 	}
-	return pipelines[0]
+	if len(pipelines) > 0 {
+		return pipelines[0]
+	}
+	return nil
 }
